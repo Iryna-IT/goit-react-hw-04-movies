@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Searchbar from '../components/Searchbar';
 import Load from '../components/Loader';
@@ -15,6 +16,19 @@ class MoviesView extends Component {
     currentPage: 1,
     isLoading: false,
     error: null,
+  };
+
+  static defaultProps = {
+    genresList: [],
+  };
+
+  static propTypes = {
+    genresList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
   };
 
   componentDidMount() {

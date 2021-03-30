@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import styles from './MovieCast.module.css';
@@ -8,6 +9,11 @@ class MovieCast extends Component {
   state = {
     cast: [],
   };
+
+  static propTypes = {
+    movieId: PropTypes.string.isRequired,
+  };
+
   async componentDidMount() {
     const { movieId } = this.props;
     const cast = await getMovieCast(movieId);

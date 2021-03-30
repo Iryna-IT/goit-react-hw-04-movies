@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import styles from './MovieReviews.module.css';
@@ -14,6 +15,10 @@ class MovieReviews extends Component {
     totalPages: 1,
     isLoading: false,
     error: null,
+  };
+
+  static propTypes = {
+    movieId: PropTypes.string.isRequired,
   };
 
   async componentDidMount() {

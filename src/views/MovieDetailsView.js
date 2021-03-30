@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route, NavLink } from 'react-router-dom';
 
 import styles from '../views/views.module.css';
@@ -20,7 +21,12 @@ class MovieDetailsView extends Component {
   };
 
   static defaultProps = {
-    genresList: [],
+    genres: [],
+  };
+
+  static propTypes = {
+    movieId: PropTypes.string.isRequired,
+    genres: PropTypes.array,
   };
 
   async componentDidMount() {

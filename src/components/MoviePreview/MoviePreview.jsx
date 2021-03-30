@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import styles from './MoviePreview.module.css';
 
 class MoviePreview extends Component {
+  static defaultProps = {
+    title: '',
+    release: '',
+    poster: '',
+    genres: '',
+  };
+
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    release: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    genres: PropTypes.string.isRequired,
+  };
+
   render() {
     const { poster, title, genres, release } = this.props;
     return (

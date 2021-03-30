@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Load from '../components/Loader';
 import Button from '../components/Button';
 import MovieList from '../components/MovieList';
 import getTrends from '../services/getTrends';
-import getLocalStorage from '../functions/getLocalStorage';
 
 class HomeView extends Component {
   state = {
@@ -12,6 +12,19 @@ class HomeView extends Component {
     currentPage: 1,
     totalPages: 1,
     error: null,
+  };
+
+  static defaultProps = {
+    genresList: [],
+  };
+
+  static propTypes = {
+    genresList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
+    ),
   };
 
   componentDidMount() {
