@@ -48,7 +48,9 @@ class MovieReviews extends Component {
         <ul className={styles.movieReviewsList}>
           {reviews.map(item => (
             <li key={item.id} className={styles.movieReviewsItem}>
-              {` ${item.author}:`}
+              <span
+                className={styles.movieReviewsItemAuthor}
+              >{` ${item.author}:`}</span>
               <p className={styles.movieReviewsItemContent}>
                 {`"${item.content}"`}
               </p>

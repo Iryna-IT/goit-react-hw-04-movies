@@ -15,7 +15,6 @@ class MovieCast extends Component {
   }
 
   render() {
-    console.log(this.state);
     const { cast } = this.state;
     // console.log(cast);
 

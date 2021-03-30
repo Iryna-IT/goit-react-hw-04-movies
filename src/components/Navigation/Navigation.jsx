@@ -19,6 +19,7 @@ const Navigation = () => {
         to={routes.movies}
         className={styles.NavigationLink}
         activeClassName={styles.Active}
+        onClick={event => localStorage.clear()}
       >
         Movies
       </NavLink>

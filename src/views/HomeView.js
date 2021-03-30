@@ -4,6 +4,7 @@ import Load from '../components/Loader';
 import Button from '../components/Button';
 import MovieList from '../components/MovieList';
 import getTrends from '../services/getTrends';
+import getLocalStorage from '../functions/getLocalStorage';
 
 class HomeView extends Component {
   state = {
@@ -17,6 +18,13 @@ class HomeView extends Component {
     this.fetchTrends();
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   const stateInLocalStorage = getLocalStorage('savedState');
+  //   if (prevState.currentPage !== stateInLocalStorage.currentPage) {
+  //     this.fetchTrends();
+  //   }
+  // }
+
   fetchTrends = () => {
     const { currentPage } = this.state;
     getTrends(currentPage)
@@ -28,7 +36,14 @@ class HomeView extends Component {
         }));
       })
       .catch(error => this.setState({ error: error }))
-      .finally(() => this.setState({ isLoading: false }));
+      .finally(() => {
+        this.setState({ isLoading: false });
+      });
+  };
+
+  loadMore = () => {
+    this.fetchTrends();
+    localStorage.setItem(`savedState`, JSON.stringify(this.state));
   };
 
   render() {
@@ -43,7 +58,7 @@ class HomeView extends Component {
         ) : null}
         {isLoading && <Load />}
         {totalPages > 1 && currentPage < totalPages && !isLoading && (
-          <Button onClick={this.fetchTrends} />
+          <Button onClick={this.loadMore} />
         )}
       </div>
     );

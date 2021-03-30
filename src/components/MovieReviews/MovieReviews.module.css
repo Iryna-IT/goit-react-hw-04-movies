@@ -1,0 +1,15 @@
+.movieReviewsList {
+  list-style: none;
+  text-align: justify;
+  font-variant: normal;
+  font-size: 16px;
+  color: black;
+  font-weight: normal;
+}
+
+.movieReviewsItemAuthor {
+  font-weight: bold;
+  color: darkblue;
+  font-variant: normal;
+  font-size: 20px;
+}

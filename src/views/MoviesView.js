@@ -21,7 +21,7 @@ class MoviesView extends Component {
     const stateInLocalStorage = getLocalStorage('savedState');
     if (
       stateInLocalStorage !== undefined &&
-      stateInLocalStorage.searchQuery !== this.state.searchQuery
+      stateInLocalStorage !== this.state
     ) {
       this.setState({
         searchQuery: stateInLocalStorage.searchQuery,
